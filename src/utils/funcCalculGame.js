@@ -55,6 +55,12 @@ export const resetGame = history => {
   history.push('/menu')
 }
 
+export const getResultGame = setResult => {
+  var start = localStorage.getItem('timeStart')
+  var end = localStorage.getItem('timeEnd')
+  setResult(end - start)
+}
+
 const randomInt = max => {
-  return Math.round(Math.random() * Math.round(max))
+  return Math.ceil(Math.random() * Math.round(max))
 }

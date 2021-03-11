@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SelectionRadioButtonRow from '../selectionRadioButtonRow'
 
-const SelectionRadioButton = ({ setSerie }) => {
+const SelectionRadioButton = ({ setSerie, serie }) => {
   return (
     <StyledSelectionTable>
       <tbody>
@@ -12,21 +12,21 @@ const SelectionRadioButton = ({ setSerie }) => {
             <SelectionRadioButtonRow
               setSerie={setSerie}
               valueSerie={10}
-              isChecked={true}
+              serie={serie}
             ></SelectionRadioButtonRow>
           </td>
           <td>
             <SelectionRadioButtonRow
               setSerie={setSerie}
               valueSerie={25}
-              isChecked={false}
+              serie={serie}
             ></SelectionRadioButtonRow>
           </td>
           <td>
             <SelectionRadioButtonRow
               setSerie={setSerie}
               valueSerie={50}
-              isChecked={false}
+              serie={serie}
             ></SelectionRadioButtonRow>
           </td>
         </tr>
@@ -42,7 +42,8 @@ const StyledSelectionTable = styled.table`
 `
 //Proptypes
 SelectionRadioButton.propTypes = {
-  setSerie: PropTypes.func
+  setSerie: PropTypes.func,
+  serie: PropTypes.number
 }
 
 export default SelectionRadioButton

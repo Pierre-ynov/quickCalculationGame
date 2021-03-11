@@ -10,7 +10,7 @@ const Game = ({ history }) => {
   }, [])
   return (
     <div>
-      <Header history={history}></Header>
+      <Header></Header>
       <CalculPageForm history={history}></CalculPageForm>
     </div>
   )

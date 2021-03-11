@@ -2,21 +2,28 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Img from '../../imgs/icon-quickcalculationgame.png'
 import { logoutPlayer } from '../../utils/funcLogin'
-import PropTypes from 'prop-types'
+import { useHistory } from 'react-router'
 
-const Header = ({ history }) => {
+const Header = () => {
   const [namePlayer, setNamePlayer] = useState('')
+  const history = useHistory()
   useEffect(() => {
     setNamePlayer(localStorage.getItem('playerName'))
   }, [])
   return (
     <StyledHeader>
-      <StyledImg src={Img} alt='logo'></StyledImg>
+      <StyledDivImg>
+        <StyledImg src={Img} alt='logo'></StyledImg>
+      </StyledDivImg>
       <StyledDiv>
         <StyledNamePlayer>Joueur : </StyledNamePlayer>
         <StyledNamePlayer>{namePlayer}</StyledNamePlayer>
       </StyledDiv>
-      <StyledLogout onClick={() => logoutPlayer(history)}>Quitter</StyledLogout>
+      <StyledDivButton>
+        <StyledLogout onClick={() => logoutPlayer(history)}>
+          Quitter
+        </StyledLogout>
+      </StyledDivButton>
     </StyledHeader>
   )
 }
@@ -28,7 +35,7 @@ const StyledHeader = styled.div`
   font-weight: bold;
   font-size: 20px;
   padding: 5px 0px;
-  display: flexbox;
+  display: flex;
   align-items: center;
 `
 
@@ -44,16 +51,23 @@ const StyledLogout = styled.span`
   padding: 2px 4px;
   border-radius: 10px;
   background-color: #00cc00;
+  margin: 0px 5px;
 `
 
 const StyledDiv = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   margin: 0px 10px;
 `
-//PropTypes
-Header.propTypes = {
-  history: PropTypes.object
-}
+
+const StyledDivImg = styled.div`
+  display: flex;
+`
+
+const StyledDivButton = styled.div`
+  display: flex;
+`
+
 export default Header

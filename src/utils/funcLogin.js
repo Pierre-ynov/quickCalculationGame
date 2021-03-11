@@ -2,13 +2,11 @@ import md5 from 'md5'
 
 export const logoutPlayer = history => {
   console.log('logout')
-  localStorage.removeItem('token')
-  localStorage.removeItem('playerName')
+  localStorage.clear()
   history.push('/')
 }
 
 export const loginPlayer = (name, history) => {
-  console.log(name)
   if (verifyNamePlayer(name)) {
     console.log('login')
     localStorage.setItem('token', md5(Date.now + name))

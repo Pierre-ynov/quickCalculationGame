@@ -10,8 +10,7 @@ const Menu = ({ history }) => {
   }, [])
   return (
     <div>
-      <Header history={history}></Header>
-      <p>Page de menu</p>
+      <Header></Header>
       <MenuForm history={history}></MenuForm>
     </div>
   )

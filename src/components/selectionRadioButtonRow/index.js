@@ -2,27 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const SelectionRadioButtonRow = ({ setSerie, valueSerie, isChecked }) => {
+const SelectionRadioButtonRow = ({ setSerie, valueSerie, serie }) => {
   return (
     <SelectionRadioButtonDiv>
-      <StyledMenuText>{valueSerie}</StyledMenuText>
-      <StyledMenuRadioButton
+      <StyledRadioButtonText>{valueSerie}</StyledRadioButtonText>
+      <StyledRadioButtonInput
         type='radio'
         value={valueSerie}
         onChange={res => setSerie(res.target.value)}
-        checked={isChecked}
-      ></StyledMenuRadioButton>
+        checked={serie == valueSerie}
+      ></StyledRadioButtonInput>
     </SelectionRadioButtonDiv>
   )
 }
 
 //Styled components
-const StyledMenuText = styled.span`
+const StyledRadioButtonText = styled.span`
   font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
 `
 
-const StyledMenuRadioButton = styled.input``
+const StyledRadioButtonInput = styled.input``
 
 const SelectionRadioButtonDiv = styled.div`
   margin: 0px 5px;
@@ -32,7 +32,7 @@ const SelectionRadioButtonDiv = styled.div`
 SelectionRadioButtonRow.propTypes = {
   setSerie: PropTypes.func,
   valueSerie: PropTypes.number,
-  isChecked: PropTypes.bool
+  serie: PropTypes.number
 }
 
 export default SelectionRadioButtonRow

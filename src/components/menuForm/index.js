@@ -15,16 +15,19 @@ const MenuForm = ({ history }) => {
           launchCalculGame(history, serie)
         }}
       >
-        <StyledMenuTitle>{'Menu'}</StyledMenuTitle>
+        <StyledMenuTitle>Menu</StyledMenuTitle>
         <StyledSelectionTitle>Série calcul :</StyledSelectionTitle>
-        <SelectionRadioButton setSerie={setSerie}></SelectionRadioButton>
+        <SelectionRadioButton
+          setSerie={setSerie}
+          serie={serie}
+        ></SelectionRadioButton>
         <StyledMenuButton
           type='submit'
           value='Lancer une partie'
         ></StyledMenuButton>
         <StyledMenuCalculInformation>
           {
-            '(Attention, les calculs avec une division prennent au maximun 3 chiffres après la virgule et son arroundi au supérieur.)'
+            '(Attention, les calculs avec une division prennent au maximun 3 chiffres après la virgule et son arroundi au supérieur. Ex: 1/8 = 0.125)'
           }
         </StyledMenuCalculInformation>
       </StyledMenuForm>
@@ -40,7 +43,7 @@ const StyledMenuForm = styled.form`
   justify-content: center;
   background-color: lightgreen;
   padding: 10px 0px;
-  margin: 0px 10px;
+  margin: 10px 10px;
   border-radius: 10px;
 `
 

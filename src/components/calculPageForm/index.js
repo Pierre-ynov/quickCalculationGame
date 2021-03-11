@@ -18,7 +18,6 @@ const CalculPageForm = ({ history }) => {
   }, [])
   useEffect(() => {
     generateCalcul(setCalcul, setResultExpected, 10)
-    console.log('regen')
     setResultPlayer('')
   }, [page])
   return (
@@ -60,7 +59,7 @@ const StyledCalculForm = styled.form`
   justify-content: center;
   background-color: lightgreen;
   padding: 10px 0px;
-  margin: 0px 10px;
+  margin: 10px 10px;
   border-radius: 10px;
   height: 300px;
 `

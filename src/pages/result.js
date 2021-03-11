@@ -10,7 +10,7 @@ const Result = ({ history }) => {
   }, [])
   return (
     <div>
-      <Header history={history}></Header>
+      <Header></Header>
       <ResultForm history={history}></ResultForm>
     </div>
   )
