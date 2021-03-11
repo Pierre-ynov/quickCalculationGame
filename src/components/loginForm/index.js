@@ -16,7 +16,12 @@ const LoginForm = () => {
   return (
     <div>
       <StyledMarginTop></StyledMarginTop>
-      <StyledLoginForm onSubmit={() => loginPlayer(namePlayer, history)}>
+      <StyledLoginForm
+        onSubmit={e => {
+          e.preventDefault()
+          loginPlayer(namePlayer, history)
+        }}
+      >
         <StyledLoginTitle>Quick Calculation Game</StyledLoginTitle>
         <StyledLogo src={Img} alt='Logo de quick calculation game'></StyledLogo>
         <StyledLoginField

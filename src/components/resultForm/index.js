@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { resetGame } from '../../utils/funcCalculGame'
 
 const ResultForm = ({ history }) => {
   const [result, setResult] = useState(0)
   useEffect(() => {}, [])
   return (
     <div>
-      ResultForm
       <StyledResultTitle>Votre Résultat</StyledResultTitle>
       <StyledResultText>{result}s</StyledResultText>
-      <StyledResultButton onClick={() => history.push('/menu')}>
+      <StyledResultButton onClick={() => resetGame(history)}>
         Retour au menu
       </StyledResultButton>
     </div>
