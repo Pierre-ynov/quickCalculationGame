@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Img from '../../imgs/icon-quickcalculationgame.png'
 import { loginPlayer } from '../../utils/funcLogin'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 
 const LoginForm = () => {
   const [namePlayer, setNamePlayer] = useState('')
@@ -86,8 +86,8 @@ const StyledMarginTop = styled.div`
   background-color: #00aa00;
   padding: 0px 0px;
 `
-LoginForm.propTypes = {
-  history: PropTypes.object
-}
+// LoginForm.propTypes = {
+//   history: PropTypes.object
+// }
 
 export default LoginForm

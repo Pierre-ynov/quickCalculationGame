@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import Img from '../../imgs/icon-quickcalculationgame.png'
 import { logoutPlayer } from '../../utils/funcLogin'
-const Header = () => {
+import PropTypes from 'prop-types'
+
+const Header = ({ history }) => {
   const [namePlayer, setNamePlayer] = useState('')
-  const history = useHistory()
   useEffect(() => {
     setNamePlayer(localStorage.getItem('playerName'))
   }, [])
@@ -21,6 +21,7 @@ const Header = () => {
   )
 }
 
+//Styled components
 const StyledHeader = styled.div`
   background-color: lightgreen;
   font-family: 'Courier New', Courier, monospace;
@@ -51,5 +52,8 @@ const StyledDiv = styled.div`
   align-items: center;
   margin: 0px 10px;
 `
-
+//PropTypes
+Header.propTypes = {
+  history: PropTypes.object
+}
 export default Header

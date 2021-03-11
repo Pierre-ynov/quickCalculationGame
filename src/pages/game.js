@@ -2,23 +2,22 @@ import React, { useEffect } from 'react'
 import Header from '../components/header'
 import { accessAuthorize } from '../utils/funcLogin'
 import PropTypes from 'prop-types'
-import MenuForm from '../components/menuForm'
+import CalculPageForm from '../components/calculPageForm'
 
-const Menu = ({ history }) => {
+const Game = ({ history }) => {
   useEffect(() => {
     accessAuthorize(history)
   }, [])
   return (
     <div>
       <Header history={history}></Header>
-      <p>Page de menu</p>
-      <MenuForm history={history}></MenuForm>
+      <CalculPageForm history={history}></CalculPageForm>
     </div>
   )
 }
 
-Menu.propTypes = {
+Game.propTypes = {
   history: PropTypes.object
 }
 
-export default Menu
+export default Game

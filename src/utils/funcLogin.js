@@ -36,3 +36,7 @@ const verifyNamePlayer = name => {
   localStorage.setItem('message', '')
   return true
 }
+
+export const accessAuthorize = history => {
+  if (!localStorage.getItem('token')) history.push('/')
+}

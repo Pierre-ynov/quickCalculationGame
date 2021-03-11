@@ -1,24 +1,23 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Header from '../components/header'
 import { accessAuthorize } from '../utils/funcLogin'
-import PropTypes from 'prop-types'
-import MenuForm from '../components/menuForm'
+import ResultForm from '../components/resultForm'
 
-const Menu = ({ history }) => {
+const Result = ({ history }) => {
   useEffect(() => {
     accessAuthorize(history)
   }, [])
   return (
     <div>
       <Header history={history}></Header>
-      <p>Page de menu</p>
-      <MenuForm history={history}></MenuForm>
+      <ResultForm history={history}></ResultForm>
     </div>
   )
 }
 
-Menu.propTypes = {
+Result.propTypes = {
   history: PropTypes.object
 }
 
-export default Menu
+export default Result
