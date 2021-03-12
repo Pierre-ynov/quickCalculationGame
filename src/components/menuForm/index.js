@@ -3,16 +3,18 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { launchCalculGame } from '../../utils/funcCalculGame'
 import SelectionRadioButton from '../selectionRadioButton'
+import ModeRadioButton from '../modeRadioButton'
 
 const MenuForm = ({ history }) => {
   const [serie, setSerie] = useState(10)
+  const [mode, setMode] = useState(10)
   useEffect(() => {}, [])
   return (
     <div>
       <StyledMenuForm
         onSubmit={e => {
           e.preventDefault()
-          launchCalculGame(history, serie)
+          launchCalculGame(history, serie, mode)
         }}
       >
         <StyledMenuTitle>Menu</StyledMenuTitle>
@@ -21,16 +23,25 @@ const MenuForm = ({ history }) => {
           setSerie={setSerie}
           serie={serie}
         ></SelectionRadioButton>
+        <StyledSelectionTitle>Mode :</StyledSelectionTitle>
+        <ModeRadioButton mode={mode} setMode={setMode}></ModeRadioButton>
         <StyledMenuButton
           type='submit'
           value='Lancer une partie'
         ></StyledMenuButton>
         <StyledMenuCalculInformation>
           {
-            '(Attention, les calculs avec une division prennent au maximun 3 chiffres après la virgule et son arroundi au supérieur. Ex: 1/8 = 0.125)'
+            '(Attention, les calculs avec une division prennent au maximun 3 chiffres après la virgule et son aroundi au supérieur. Ex: 1/8 = 0.125)'
           }
         </StyledMenuCalculInformation>
       </StyledMenuForm>
+      <StyledScoreButton
+        onClick={() => {
+          history.push('/score')
+        }}
+      >
+        Voir le tableau des scores
+      </StyledScoreButton>
     </div>
   )
 }
@@ -72,6 +83,19 @@ const StyledSelectionTitle = styled.span`
   font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
 `
+
+const StyledScoreButton = styled.button`
+  font-size: 18px;
+  padding: 5px 10px;
+  height: 30px;
+  border-radius: 12px;
+  background-color: lightgreen;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  margin: 5px 0px;
+`
+
 //Proptypes
 MenuForm.propTypes = {
   history: PropTypes.object

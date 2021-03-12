@@ -9,7 +9,7 @@ const SelectionRadioButtonRow = ({ setSerie, valueSerie, serie }) => {
       <StyledRadioButtonInput
         type='radio'
         value={valueSerie}
-        onChange={res => setSerie(res.target.value)}
+        onChange={res => setSerie(Number(res.target.value))}
         checked={serie == valueSerie}
       ></StyledRadioButtonInput>
     </SelectionRadioButtonDiv>

@@ -1,6 +1,9 @@
-export const launchCalculGame = (history, serie) => {
+import { addNewScore } from './funcScore'
+
+export const launchCalculGame = (history, serie, mode) => {
   localStorage.setItem('timeStart', Date.now())
   localStorage.setItem('serie', serie)
+  localStorage.setItem('mode', mode)
   history.push('/game')
 }
 
@@ -26,9 +29,9 @@ export const verifyCalcul = (
 }
 
 export const generateCalcul = (setCalcul, setResultExpected, numberMax) => {
-  var operateur = randomInt(4)
-  var number1 = randomInt(numberMax)
-  var number2 = randomInt(numberMax)
+  let operateur = randomInt(4)
+  let number1 = randomInt(numberMax)
+  let number2 = randomInt(numberMax)
   switch (operateur) {
     case 1:
       setResultExpected(number1 + number2)
@@ -50,15 +53,25 @@ export const generateCalcul = (setCalcul, setResultExpected, numberMax) => {
 }
 
 export const resetGame = history => {
-  localStorage.setItem('timeStart', 0)
-  localStorage.setItem('timeEnd', 0)
+  cleanCache()
   history.push('/menu')
 }
 
 export const getResultGame = setResult => {
-  var start = localStorage.getItem('timeStart')
-  var end = localStorage.getItem('timeEnd')
-  setResult(end - start)
+  const start = localStorage.getItem('timeStart')
+  const end = localStorage.getItem('timeEnd')
+  let malus = localStorage.getItem('malus')
+  if (!malus) malus = 0
+  const result = end - start + Number(malus)
+  setResult(result)
+  addNewScore(result)
+}
+
+export const cleanCache = () => {
+  localStorage.removeItem('malus')
+  localStorage.removeItem('timeStart')
+  localStorage.removeItem('timeEnd')
+  localStorage.removeItem('isAlreadyAdd')
 }
 
 const randomInt = max => {

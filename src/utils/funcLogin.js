@@ -1,8 +1,11 @@
 import md5 from 'md5'
+import { cleanCache } from './funcCalculGame'
 
 export const logoutPlayer = history => {
   console.log('logout')
-  localStorage.clear()
+  localStorage.removeItem('playerName')
+  localStorage.removeItem('token')
+  cleanCache()
   history.push('/')
 }
 

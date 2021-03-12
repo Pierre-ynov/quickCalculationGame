@@ -15,6 +15,13 @@ const ResultForm = ({ history }) => {
       <StyledResultButton onClick={() => resetGame(history)}>
         Retour au menu
       </StyledResultButton>
+      <StyledResultButton
+        onClick={() => {
+          history.push('/score')
+        }}
+      >
+        Voir le tableau des scores
+      </StyledResultButton>
     </StyledResultDiv>
   )
 }

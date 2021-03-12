@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { generateCalcul, verifyCalcul } from '../../utils/funcCalculGame'
+import { addMalus } from '../../utils/funcScore'
 
 const CalculPageForm = ({ history }) => {
   const [serie, setSerie] = useState(0)
+  const [mode, setMode] = useState(10)
   const [page, setPage] = useState(0)
   const [resultPlayer, setResultPlayer] = useState('')
   const [resultExpected, setResultExpected] = useState(0)
@@ -13,11 +15,12 @@ const CalculPageForm = ({ history }) => {
   useEffect(() => {
     if (page == 0) {
       setSerie(localStorage.getItem('serie'))
+      setMode(localStorage.getItem('mode'))
       setPage(page + 1)
     }
   }, [])
   useEffect(() => {
-    generateCalcul(setCalcul, setResultExpected, 10)
+    generateCalcul(setCalcul, setResultExpected, mode)
     setResultPlayer('')
   }, [page])
   return (
@@ -44,7 +47,15 @@ const CalculPageForm = ({ history }) => {
           placeholder='Résultat du calcul'
           onChange={res => setResultPlayer(res.target.value)}
         ></StyledCalculField>
-        <StyledCalculButton type='submit' value='Valider'></StyledCalculButton>
+        <StyledCalculButton
+          type='button'
+          value='Changer le calcul (malus +20s)'
+          onClick={() => {
+            addMalus()
+            setResultPlayer('')
+            generateCalcul(setCalcul, setResultExpected, mode)
+          }}
+        ></StyledCalculButton>
         <StyledCalculErrorMessage>{errorCalcul}</StyledCalculErrorMessage>
       </StyledCalculForm>
     </div>
